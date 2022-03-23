@@ -16,13 +16,22 @@ import BoldPlugin from "@ckeditor/ckeditor5-basic-styles/src/bold";
 import ItalicPlugin from "@ckeditor/ckeditor5-basic-styles/src/italic";
 import LinkPlugin from "@ckeditor/ckeditor5-link/src/link";
 import ParagraphPlugin from "@ckeditor/ckeditor5-paragraph/src/paragraph";
-
+// image
+import Image from "@ckeditor/ckeditor5-image/src/image.js";
+import ImageCaption from "@ckeditor/ckeditor5-image/src/imagecaption.js";
+import ImageStyle from "@ckeditor/ckeditor5-image/src/imagestyle.js";
+import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar.js";
+import ImageUpload from "@ckeditor/ckeditor5-image/src/imageupload.js";
+import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
+import ImageResizeEditing from "@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting";
+import ImageResizeHandles from "@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles";
 export default {
   name: "App",
   data() {
     return {
       editor: ClassicEditor,
-      editorData: "<p>Content of the editor.</p>",
+      editorData:
+        "<p>Hello~</p><figure class='image'><img src='https://via.placeholder.com/1000x300/02c7cd/fff?text=Placeholder%20image' alt='CKEditor 5 rocks!'></figure>",
       editorConfig: {
         plugins: [
           EssentialsPlugin,
@@ -30,10 +39,45 @@ export default {
           ItalicPlugin,
           LinkPlugin,
           ParagraphPlugin,
+          Image,
+          ImageCaption,
+          ImageStyle,
+          ImageToolbar,
+          ImageUpload,
+          ImageResize,
+          ImageResizeEditing,
+          ImageResizeHandles,
         ],
-
         toolbar: {
           items: ["bold", "italic", "link", "undo", "redo"],
+        },
+        image: {
+          resizeOptions: [
+            {
+              name: "resizeImage:original",
+              value: null,
+              icon: "original",
+            },
+            {
+              name: "resizeImage:50",
+              value: "50",
+              icon: "medium",
+            },
+            {
+              name: "resizeImage:75",
+              value: "75",
+              icon: "large",
+            },
+          ],
+          toolbar: [
+            "imageTextAlternative",
+            "imageStyle:inline",
+            "imageStyle:block",
+            "imageStyle:side",
+            "resizeImage:50",
+            "resizeImage:75",
+            "resizeImage:original",
+          ],
         },
       },
     };
